@@ -15,3 +15,8 @@ exports.create = async (req, res) => {
     return res.status(400).send("Post creation failed!");
   }
 };
+
+exports.listAll = async (req, res) => {
+  const allPosts = await Post.find({}).sort({ createdAt: 1 }).exec();
+  res.json(allPosts);
+};
